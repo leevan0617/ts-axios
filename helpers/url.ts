@@ -1,4 +1,4 @@
-import { isDate , isObject } from './util'
+import { isDate , isPlainObject } from './util'
 
 //url字符串编码函数
 function encode (val:string): string {
@@ -38,7 +38,7 @@ export function buildURL (url:string,params?:any){
         values.forEach(val => {
             if(isDate(val)){
                 val = val.toISOString();
-            }else if(isObject(val)){
+            }else if(isPlainObject(val)){
                 val = JSON.stringify(val);
             }
             parts.push(`${encode(key)}=${encode(val)}`)
